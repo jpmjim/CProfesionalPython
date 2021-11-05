@@ -39,17 +39,20 @@ Los tipados es una clasificación de los lenguajes de programación, tenemos cua
 El tipado del lenguaje depende de cómo trata a los tipos de datos.
 
 El tipado estático es el que levanta un error en el tiempo de compilación, ejemplo en JAVA:
+```
 String str = "Hello" // Variable tipo String
 str = 5 // ERROR: no se puede convertir un tipo de dato en otro de esta forma.
-
+```
 
 El tipado dinámico levantan el error en tiempo de ejecución, ejemplo en Python:
+```
 str = "Hello" # Variable tipo String
 str = 5 # La variable ahora es de tipo Entero, no hay error
 ## TIPADO FUERTE
 x = 1
 y = "2"
 z = x + y # ERROR: no podemos hacer estas operaciones con tipos de datos distintos entre sí.
+```
 
 El tipado débil es el que hace un cambio en un tipo de dato para poder operar con el, como lo hace JavaScript y PHP.
 
@@ -60,7 +63,7 @@ Tipado estático en Python
 Para hacer que Python sea de tipado estático es necesario agregar algo de sintaxis adicional a lo aprendido, además, esta característica solo se puede aplicar a partir de la versión 3.6.
 
 De esta manera se declara una variable, se colocan los dos puntos (:), el tipo de dato y para finalizar se usa el signo igual para asignar el valor a la variable.
-
+```
 <variable> : <tipo_de_dato> = <valor_asignado>
 
 a: int = 5
@@ -71,9 +74,9 @@ print(b)
 
 c: bool = True
 print(c)
-
+```
 Del mismo modo se puede usar esta metodología de tipado en Python a funciones adicionando el signo menos a continuación del signo mayor que para determinar el tipo de dato. Ejemplo:
-
+```
 def <nombre_func> ( <parametro1> : <tipo_de_dato>, <parametro2> : <tipo_de_dato> ) ->  <tipo_de_dato> :
 	pass
 
@@ -81,10 +84,11 @@ def suma(a: int, b: int) -> int :
 	return a + b
 
 print(suma(1,2))
-
+```
 Existe una librería de fabrica que viene preinstalada con Python que se llama typing, que es de gran utilidad para trabajar con tipado con estructuras de datos entre la versión 3.6 y 3.9, entonces:
 
 Ejemplo 1 :
+```
 from typing import Dict, List
 
 positives: List [int] = [1,2,3,4,5]
@@ -125,6 +129,21 @@ coordinates: CoordinatesType = [
 		"coord2": (2,5)
 	}
 ]
-
+```
 Modulo mypy:
 El modulo mypy se complementa con el modulo typing ya que permitirá mostrar los errores de tipado debil en Python.
+
+El modulo mypy se complementa con el modulo typing ya que permitirá mostrar los errores de tipado débil en Python.
+
+Para revisar si algún archivo contiene errores de tipado ejecutamos en la línea de comandos lo siguiente:
+
+mypy "nombre del archivo" --check-untyped-defs
+```
+mypy palindrome.py --check-untyped-defs
+```
+nos muestra el error de esta manera:
+```
+palindrome.py:7: error: Argument 1 to "is_palindrome" has incompatible type "int"; expected "str"
+Found 1 error in 1 file (checked 1 source file)
+```
+
