@@ -229,3 +229,50 @@ print(mensaje('Cesar'))
 
 
 ![alt text](https://static.platzi.com/media/user_upload/carbon%20%289%29-a5820f5d-379e-4221-968e-428a10ce6803.jpg)
+
+
+Estructuras de datos avanzadas
+------------------------------
+Iteradores:
+Antes de entender qué son los iteradores, primero debemos entender a los iterables.
+Son todos aquellos objetos que podemos recorrer en un ciclo. Son aquellas estructuras de datos divisibles en elementos únicos que yo puedo recorrer en un ciclo.
+Pero en Python las cosas no son así. Los iterables se convierten en iteradores.
+- Ventajas de usar iteradores:
+    - Nos ahorra recursos.
+    - Ocupan poca memoria.
+
+Ejemplo:
+```
+# Creando un iterador
+
+my_list = [1,2,3,4,5]
+my_iter = iter(my_list)
+
+# Iterando un iterador
+
+print(next(my_iter))
+
+# Cuando no quedan datos, la excepción StopIteration es elevada
+```
+```
+# Creando un iterador
+
+my_list = [1,2,3,4,5]
+my_iter = iter(my_list)
+
+# Iterando un iterador
+
+while True: #ciclo infinito
+  try:
+    element = next(my_iter)
+    print(element)
+  except StopIteration:
+    break
+```
+Momento impactante: El ciclo “for” dentro de Python, no existe. Es un while con StopIteration. 🤯🤯🤯
+```
+my_list = [1,2,3,4,5]
+
+for element in my_list:
+  print(element)
+```
