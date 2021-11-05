@@ -210,3 +210,22 @@ print(times10(times4(2))) # 80
 ```
 Los closure aparecen en dos casos particulares: cuando tenemos una clase corta (con un solo método), los usamos para que sean elegantes. El segundo caso, es cuando usamos decoradores 👀
 
+Decoradores
+-----------
+Es una función que recibe como parámetro otra función, le añade cosas y retorna una función diferente. Tienen la misma estructura que los Closures pero en vez de variables lo que se envía es una función.
+```
+def mayusculas(func):
+    def envoltura(texto):
+        return func(texto).upper()
+    return envoltura
+
+@mayusculas
+def mensaje(nombre):
+    return f'{nombre}, recibiste un mensaje' 
+
+
+print(mensaje('Cesar'))
+```
+
+
+![alt text](https://static.platzi.com/media/user_upload/carbon%20%289%29-a5820f5d-379e-4221-968e-428a10ce6803.jpg)
